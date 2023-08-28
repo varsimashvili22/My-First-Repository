@@ -1,0 +1,25 @@
+﻿@page
+@model LegitProject.Models.MyModels
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="text-center">
+    <form id="signupForm" method="post" asp-page-handler="SignUp" >
+        <input type="text" style="margin-top:50px;" id="username" placeholder="Username" asp-for="Username" />
+        <br />
+        <input type="password" style="margin-top:20px;" id="password" placeholder="Password" asp-for="Password" />
+        <br />
+        <button type="submit" style="margin-top:20px;">Sign Up</button>
+        <h1 class="text-light">   </h1>
+    </form>
+    
+</div>
+<script>
+    document.getElementById("signupForm").addEventListener("submit", function (event) {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        
+    });
+</script>
