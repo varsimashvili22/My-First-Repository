@@ -1,18 +1,21 @@
 ﻿@page
-@model LegitProject.Models.MyModels
+@model LegitProject.Pages.MyPages.SignUpModel
 @{
     ViewData["Title"] = "Sign Up";
 }
 
 <div class="text-center">
-    <form id="signupForm" method="post" asp-page-handler="SignUp" >
-        <input type="text" style="margin-top:50px;" id="username" placeholder="Username" asp-for="Username" />
+
+        <input type="text" style="margin-top:50px;" id="username" placeholder="Username" asp-for="User.Username" />
         <br />
-        <input type="password" style="margin-top:20px;" id="password" placeholder="Password" asp-for="Password" />
+        <input type="password" style="margin-top:20px;" id="password" placeholder="Password" asp-for="User.Password" />
         <br />
-        <button style="margin-top:20px;">Sign Up</button>
-        <h1 class="text-light">   </h1>
-    </form>
+        <input type="submit" style="margin-top:20px;" />
+    <h1 class="text-light">
+     
+        
+    </h1>
+
     
 </div>
 
