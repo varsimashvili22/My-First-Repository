@@ -1,5 +1,5 @@
 ﻿@page
-@model LegitProject.Models.User
+@model LegitProject.Pages.MyPages.SignInModel
 @{
     ViewData["Title"] = "Sign in";
 }
@@ -9,8 +9,13 @@
         <input type="text" id="username" placeholder="Username" />
         <input type="password" id="password" placeholder="Password" />
         <button type="submit">Sign Up</button>
+        <div class="text-light">
+            <h1>Welcome, @foreach(var user in Model.DataList)
+                {
+                    <h1>@user.Username</h1>
+                }
+            </h1>
+        </div>
     </form>
-    <div class="text-center">
-      
-    </div>
+    
 </div>

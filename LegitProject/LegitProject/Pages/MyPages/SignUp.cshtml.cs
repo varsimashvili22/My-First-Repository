@@ -10,7 +10,6 @@ namespace LegitProject.Pages.MyPages
     {
         private readonly MyDbContext _context;
 
-
         public SignUpModel(MyDbContext context)
         {
             _context = context;
@@ -26,16 +25,16 @@ namespace LegitProject.Pages.MyPages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            
-            if (ModelState.IsValid && !UserModel.Username.IsNullOrEmpty())
+            if (!UserModel.Username.IsNullOrEmpty() && _context.GetUserByUsername(UserModel.Username) == null)
             {
-                // Save the user to the database
                 _context.Users.Add(UserModel);
                 await _context.SaveChangesAsync();
 
+                ViewData["SavedUsername"] = UserModel.Username;
+                ViewData["bla"] = "blablaslaks"; // Set ViewData here
+
                 return RedirectToPage("./SignIn");
             }
-
             return Page();
         }
     }

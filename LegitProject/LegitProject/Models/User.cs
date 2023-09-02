@@ -12,5 +12,7 @@ namespace LegitProject.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = "";
+
+ 
     }
 }

@@ -14,12 +14,12 @@ namespace LegitProject.Pages.MyPages
             _context = context;
         }
 
-
+        public User[] DataList { get; private set; }
 
         public void OnGet()
         {
-            // Retrieve the latest saved username from the database
-
+            // Query the database to retrieve the data
+            DataList = _context.Users.ToArray();
         }
     }
 }

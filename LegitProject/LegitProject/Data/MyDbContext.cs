@@ -14,8 +14,12 @@ namespace LegitProject.Data
                 : base(options)
             {
             }
+            public User? GetUserByUsername(string username)
+            {
+              return Users.FirstOrDefault(u => u.Username == username);
+            }
 
-            public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
             
         }
     
