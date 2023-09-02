@@ -14,13 +14,12 @@ namespace LegitProject.Pages.MyPages
             _context = context;
         }
 
-        public string? Username { get; set; }
+
 
         public void OnGet()
         {
             // Retrieve the latest saved username from the database
-            User? latestUser = _context.Users.OrderByDescending(u => u.Id).FirstOrDefault();
-            Username = latestUser?.Username;
+
         }
     }
 }

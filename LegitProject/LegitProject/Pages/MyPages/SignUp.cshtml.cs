@@ -2,12 +2,14 @@ using LegitProject.Data;
 using LegitProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LegitProject.Pages.MyPages
 {
     public class SignUpModel : PageModel
     {
         private readonly MyDbContext _context;
+
 
         public SignUpModel(MyDbContext context)
         {
@@ -24,17 +26,19 @@ namespace LegitProject.Pages.MyPages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (ModelState.IsValid)
+            
+            if (ModelState.IsValid && !UserModel.Username.IsNullOrEmpty())
             {
                 // Save the user to the database
                 _context.Users.Add(UserModel);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                return RedirectToPage("/MyPages/SignIn");
+                return RedirectToPage("./SignIn");
             }
 
-            return RedirectToPage("/MyPages/SignIn");
+            return Page();
         }
     }
+
 }
 
