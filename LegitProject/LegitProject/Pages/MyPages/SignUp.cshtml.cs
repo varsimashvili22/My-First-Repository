@@ -1,3 +1,4 @@
+#pragma warning disable 
 using LegitProject.Data;
 using LegitProject.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -25,13 +26,10 @@ namespace LegitProject.Pages.MyPages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!UserModel.Username.IsNullOrEmpty() && _context.GetUserByUsername(UserModel.Username) == null)
+            if (!UserModel.Username.IsNullOrEmpty() && !UserModel.Password.IsNullOrEmpty() && _context.GetUserByUsername(UserModel.Username) == null)
             {
                 _context.Users.Add(UserModel);
                 await _context.SaveChangesAsync();
-
-                ViewData["SavedUsername"] = UserModel.Username;
-                ViewData["bla"] = "blablaslaks"; // Set ViewData here
 
                 return RedirectToPage("./SignIn");
             }
