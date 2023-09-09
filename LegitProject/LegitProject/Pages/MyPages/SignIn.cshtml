@@ -4,16 +4,15 @@
     ViewData["Title"] = "Sign in";
 }
 
-<div class="text-center">
+<div class="text-center text-light">
     <form method="post">
+        <h1>Sign in</h1>
+        <br />
         <input type="text" style="margin-top: 50px;" id="username" placeholder="Username" asp-for="Username" />
         <br />
         <input type="password" style="margin-top: 20px;" id="password" placeholder="Password" asp-for="Password" />
         <br />
         <input type="submit" style="margin-top: 20px;" value="Sign In" class="btn btn-primary" />
-        <div class="text-light">
-            
-        </div>
     </form>
     
 </div>

@@ -18,6 +18,8 @@ namespace LegitProject.Pages.MyPages
 
         [BindProperty]
         public User UserModel { get; set; }
+        [BindProperty]
+        public string ErrorMassage { get; set; } = "";
 
         public void OnGet()
         {
@@ -26,14 +28,24 @@ namespace LegitProject.Pages.MyPages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!UserModel.Username.IsNullOrEmpty() && !UserModel.Password.IsNullOrEmpty() && _context.GetUserByUsername(UserModel.Username) == null)
+            if (_context.GetUserByUsername(UserModel.Username) != null)
             {
-                _context.Users.Add(UserModel);
-                await _context.SaveChangesAsync();
-
-                return RedirectToPage("./SignIn");
+                ErrorMassage = "Username already exists!";
+                return Page();
             }
-            return Page();
+            if (UserModel.Username.IsNullOrEmpty())
+            {
+                ErrorMassage = "Enter Username!";
+                return Page();
+            }
+            if (UserModel.Password.IsNullOrEmpty())
+            {
+                ErrorMassage = "Enter Password!";
+                return Page();
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./SignIn");
         }
     }
 
